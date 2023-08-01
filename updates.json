@@ -1,8 +1,8 @@
 {
-  "homepage": "<https://legacy.curseforge.com/minecraft/mc-mods/peres-super-sandwiches>",
+  "homepage": "https://legacy.curseforge.com/minecraft/mc-mods/peres-super-sandwiches",
   "1.20.1": {
-    "1.20.1-0.0.1.0": "Mod launch, enjoy!",
-    "1.20.1-0.0.1.1": "New stuff!"
+    "1.20.1-0.0.1.1": "New stuff!",
+    "1.20.1-0.0.1.0": "Mod launch, enjoy!"
     // List all versions of your mod for the given Minecraft version, along with their changelogs
     // ...
   },
