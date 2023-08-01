@@ -1,0 +1,15 @@
+{
+  "homepage": "<https://legacy.curseforge.com/minecraft/mc-mods/peres-super-sandwiches>",
+  "<1.20.1>": {
+    "<1.20.1-0.0.1.0>": "<Mod launch, enjoy!>"
+    // List all versions of your mod for the given Minecraft version, along with their changelogs
+    // ...
+  },
+  "promos": {
+    "<1.20.1>-latest": "<1.20.1-0.0.1.0>",
+    // Declare the latest bleeding-edge version of your mod for the given Minecraft version
+    "<1.20.1>-recommended": "<1.20.1-0.0.1.0>",
+    // Declare the latest stable version of your mod for the given Minecraft version
+    // ...
+  }
+}
