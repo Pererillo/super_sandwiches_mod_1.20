@@ -1,0 +1,38 @@
+{
+  "parent": "super_sandwiches:sandwiches/adding_flavor",
+  "criteria": {
+    "ffish": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_sandwiches:flavored_tropical_fish"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.sandwiches.sugoi.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "super_sandwiches:flavored_tropical_fish"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.sandwiches.sugoi.title"
+    }
+  },
+  "requirements": [
+    [
+      "ffish"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

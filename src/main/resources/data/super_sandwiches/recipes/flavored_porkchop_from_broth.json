@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "group": "flavored",
+  "ingredients": [
+    {
+      "item": "minecraft:cooked_porkchop"
+    },
+    {
+      "item": "super_sandwiches:broth"
+    }
+  ],
+  "result": {
+    "item": "super_sandwiches:flavored_porkchop",
+    "count": 1
+  }
+}

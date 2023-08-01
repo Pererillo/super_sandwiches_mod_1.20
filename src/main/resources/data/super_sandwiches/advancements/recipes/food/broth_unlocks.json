@@ -1,0 +1,41 @@
+{
+  "parent": "super_sandwiches:recipes/root",
+  "criteria": {
+    "has_broth": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_sandwiches:broth"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "super_sandwiches:flavored_iron_from_broth"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_broth",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "super_sandwiches:flavored_iron_from_broth",
+      "super_sandwiches:flavored_chicken_from_broth",
+      "super_sandwiches:flavored_diamond_from_broth",
+      "super_sandwiches:flavored_pitcher_plant_from_broth",
+      "super_sandwiches:flavored_porkchop_from_broth",
+      "super_sandwiches:flavored_steak_from_broth",
+      "super_sandwiches:flavored_tropical_fish_from_broth"
+    ]
+  },
+  "sends_telemetry_event": false
+}

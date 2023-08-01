@@ -1,0 +1,41 @@
+{
+  "parent": "super_sandwiches:sandwiches/flavors_from_the_past",
+  "criteria": {
+    "traveler": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_sandwiches:super_traveler_sandwich"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.sandwiches.grandmas_recipe.description"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "item": "super_sandwiches:super_traveler_sandwich"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.sandwiches.grandmas_recipe.title"
+    }
+  },
+  "requirements": [
+    [
+      "traveler"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": false
+}

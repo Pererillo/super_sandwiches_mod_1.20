@@ -1,0 +1,171 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:cookie"
+    },
+    "title": {
+      "translate": "advancements.sandwiches.subway.title",
+      "bold": true,
+      "italic": true
+    },
+    "description": {
+      "translate": "advancements.sandwiches.subway.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "super_sandwiches:sandwiches/classics",
+  "criteria": {
+    "s_beef": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_sandwiches:beef_sandwich"
+          ]
+        }
+      }
+    },
+    "ss_beef": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_sandwiches:super_beef_sandwich"
+          ]
+        }
+      }
+    },
+    "s_pork": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_sandwiches:pork_sandwich"
+          ]
+        }
+      }
+    },
+    "ss_pork": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_sandwiches:super_pork_sandwich"
+          ]
+        }
+      }
+    },
+    "s_teriyaki": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_sandwiches:teriyaki_sandwich"
+          ]
+        }
+      }
+    },
+    "ss_teriyaki": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_sandwiches:super_teriyaki_sandwich"
+          ]
+        }
+      }
+    },
+    "s_fish": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_sandwiches:fish_sandwich"
+          ]
+        }
+      }
+    },
+    "angler": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_sandwiches:super_angler_sandwich"
+          ]
+        }
+      }
+    },
+    "miner": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_sandwiches:super_miner_sandwich"
+          ]
+        }
+      }
+    },
+    "traveler": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_sandwiches:super_traveler_sandwich"
+          ]
+        }
+      }
+    },
+    "golem": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_sandwiches:super_golem_sandwich"
+          ]
+        }
+      }
+    }
+  },
+  "requirements": [
+    [
+      "s_beef"
+    ],
+    [
+      "ss_beef"
+    ],
+    [
+      "s_pork"
+    ],
+    [
+      "ss_pork"
+    ],
+    [
+      "s_teriyaki"
+    ],
+    [
+      "ss_teriyaki"
+    ],
+    [
+      "s_fish"
+    ],
+    [
+      "angler"
+    ],
+    [
+      "miner"
+    ],
+    [
+      "traveler"
+    ],
+    [
+      "golem"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  },
+  "sends_telemetry_event": false
+}
