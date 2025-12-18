@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "food",
+  "group": "s_sandwiches",
+  "key": {
+    "M": {
+      "item": "super_sandwiches:flavored_phantom_membrane"
+    },
+    "B": {
+      "item": "super_sandwiches:slice_of_bread"
+    }
+  },
+  "pattern": [
+    " B ",
+    " M ",
+    " B "
+  ],
+  "result": {
+    "item": "super_sandwiches:super_explorer_sandwich"
+  },
+  "show_notification": true
+}

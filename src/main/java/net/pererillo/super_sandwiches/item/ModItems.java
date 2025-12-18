@@ -41,6 +41,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(ModFoods.FLAVORED_DIAMOND)));
     public static final RegistryObject<Item> FLAVORED_PITCHER_PLANT = ITEMS.register("flavored_pitcher_plant",
             () -> new Item(new Item.Properties().food(ModFoods.FLAVORED_PITCHER_PLANT)));
+    public static final RegistryObject<Item> FLAVORED_PHANTOM_MEMBRANE = ITEMS.register("flavored_phantom_membrane",
+            () -> new Item(new Item.Properties().food(ModFoods.FLAVORED_PHANTOM_MEMBRANE)));
     public static final RegistryObject<Item> BEEF_SANDWICH = ITEMS.register("beef_sandwich",
             () -> new Item(new Item.Properties().food(ModFoods.BEEF_SANDWICH)));
     public static final RegistryObject<Item> SUPER_BEEF_SANDWICH = ITEMS.register("super_beef_sandwich",
@@ -59,6 +61,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(ModFoods.SUPER_MINER_SANDWICH)));
     public static final RegistryObject<Item> SUPER_TRAVELER_SANDWICH = ITEMS.register("super_traveler_sandwich",
             () -> new Item(new Item.Properties().food(ModFoods.SUPER_TRAVELER_SANDWICH)));
+    public static final RegistryObject<Item> SUPER_EXPLORER_SANDWICH = ITEMS.register("super_explorer_sandwich",
+            () -> new Item(new Item.Properties().food(ModFoods.SUPER_EXPLORER_SANDWICH)));
 
     public static final RegistryObject<Item> SLICE_OF_BREAD = ITEMS.register("slice_of_bread",
             () -> new Item(new Item.Properties().food(ModFoods.SLICE_OF_BREAD)));

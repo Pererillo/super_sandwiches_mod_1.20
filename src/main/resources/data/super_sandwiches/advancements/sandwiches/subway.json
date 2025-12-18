@@ -127,6 +127,16 @@
           ]
         }
       }
+    },
+    "explorer": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "super_sandwiches:super_explorer_sandwich"
+          ]
+        }
+      }
     }
   },
   "requirements": [
@@ -162,6 +172,9 @@
     ],
     [
       "golem"
+    ],
+    [
+      "explorer"
     ]
   ],
   "rewards": {

@@ -37,6 +37,8 @@ public class ModCreativeModeTabs {
                         pOutput.accept(ModItems.SUPER_MINER_SANDWICH.get());
                         pOutput.accept(ModItems.FLAVORED_PITCHER_PLANT.get());
                         pOutput.accept(ModItems.SUPER_TRAVELER_SANDWICH.get());
+                        pOutput.accept(ModItems.FLAVORED_PHANTOM_MEMBRANE.get());
+                        pOutput.accept(ModItems.SUPER_EXPLORER_SANDWICH.get());
                         pOutput.accept(ModItems.BROTH.get());
 
 

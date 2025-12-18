@@ -34,7 +34,8 @@
       "super_sandwiches:flavored_pitcher_plant_from_broth",
       "super_sandwiches:flavored_porkchop_from_broth",
       "super_sandwiches:flavored_steak_from_broth",
-      "super_sandwiches:flavored_tropical_fish_from_broth"
+      "super_sandwiches:flavored_tropical_fish_from_broth",
+      "super_sandwiches:flavored_phantom_membrane_from_broth"
     ]
   },
   "sends_telemetry_event": false

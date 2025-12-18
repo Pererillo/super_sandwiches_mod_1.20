@@ -1,0 +1,41 @@
+{
+  "parent": "super_sandwiches:sandwiches/is_that_edible",
+  "criteria": {
+    "explorer": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_sandwiches:super_explorer_sandwich"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.sandwiches.i_can_see_my_house_from_here.description"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "item": "super_sandwiches:super_explorer_sandwich"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.sandwiches.i_can_see_my_house_from_here.title"
+    }
+  },
+  "requirements": [
+    [
+      "explorer"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": false
+}
