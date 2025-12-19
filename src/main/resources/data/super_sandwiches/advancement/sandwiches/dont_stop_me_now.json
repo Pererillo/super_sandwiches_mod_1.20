@@ -1,0 +1,40 @@
+{
+  "parent": "super_sandwiches:sandwiches/hard_diet",
+  "criteria": {
+    "miner": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "super_sandwiches:super_miner_sandwich"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.sandwiches.dont_stop_me_now.description"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "id": "super_sandwiches:super_miner_sandwich"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.sandwiches.dont_stop_me_now.title"
+    }
+  },
+  "requirements": [
+    [
+      "miner"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "sends_telemetry_event": false
+}

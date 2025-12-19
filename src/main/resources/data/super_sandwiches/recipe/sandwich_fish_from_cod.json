@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "food",
+  "group": "sandwiches",
+  "key": {
+    "M": {
+      "item": "minecraft:cooked_cod"
+    },
+    "B": {
+      "item": "super_sandwiches:slice_of_bread"
+    }
+  },
+  "pattern": [
+    " B ",
+    " M ",
+    " B "
+  ],
+  "result": {
+    "id": "super_sandwiches:fish_sandwich"
+  },
+  "show_notification": true
+}

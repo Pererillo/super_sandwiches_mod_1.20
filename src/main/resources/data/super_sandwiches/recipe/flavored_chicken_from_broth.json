@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "group": "flavored",
+  "ingredients": [
+    {
+      "item": "minecraft:cooked_chicken"
+    },
+    {
+      "item": "super_sandwiches:broth"
+    }
+  ],
+  "result": {
+    "id": "super_sandwiches:flavored_chicken",
+    "count": 1
+  }
+}

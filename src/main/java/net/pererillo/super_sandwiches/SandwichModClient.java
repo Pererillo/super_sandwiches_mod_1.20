@@ -3,6 +3,8 @@ package net.pererillo.super_sandwiches;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.BlockAndTintGetter;
@@ -35,7 +37,12 @@ public class SandwichModClient {
 
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
-        // Some client setup code
+        event.enqueueWork(() -> {  // Importante: enqueueWork para que se ejecute en el hilo correcto
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.HOT_WATER_SOURCE.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.HOT_WATER_FLOWING.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(ModFluids.HOT_WATER_BLOCK.get(), RenderType.translucent());
+        });
+
         SandwichMod.LOGGER.info("HELLO FROM CLIENT SETUP");
         SandwichMod.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
     }
@@ -44,28 +51,20 @@ public class SandwichModClient {
     public static void registerClientExtensions(RegisterClientExtensionsEvent event) {
         event.registerFluidType(new IClientFluidTypeExtensions() {
             private static final ResourceLocation STILL = ResourceLocation.fromNamespaceAndPath(SandwichMod.MODID, "block/hot_water_still");
-            private static final ResourceLocation FLOWING = ResourceLocation.fromNamespaceAndPath(SandwichMod.MODID, "block/hot_water_flowing");
-            private static final ResourceLocation OVERLAY = ResourceLocation.fromNamespaceAndPath("minecraft", "block/water_overlay");
+            private static final ResourceLocation FLOWING = ResourceLocation.fromNamespaceAndPath(SandwichMod.MODID, "block/hot_water_flow");
+            private static final ResourceLocation OVERLAY = ResourceLocation.fromNamespaceAndPath(SandwichMod.MODID, "misc/water_overlay");
 
             @Override
-            public @NotNull ResourceLocation getStillTexture() {
-                return STILL;
-            }
+            public @NotNull ResourceLocation getStillTexture() { return STILL; }
 
             @Override
-            public @NotNull ResourceLocation getFlowingTexture() {
-                return FLOWING;
-            }
+            public @NotNull ResourceLocation getFlowingTexture() { return FLOWING; }
 
             @Override
-            public ResourceLocation getOverlayTexture() {
-                return OVERLAY;
-            }
+            public ResourceLocation getOverlayTexture() { return OVERLAY; }
 
             @Override
-            public int getTintColor() {
-                return 0xFFFF8800;  // Naranja para agua caliente
-            }
+            public int getTintColor() { return 0xFF7889ED; }
 
             @Override
             public int getTintColor(@NotNull FluidState state, @NotNull BlockAndTintGetter getter, @NotNull BlockPos pos) {
@@ -74,7 +73,7 @@ public class SandwichModClient {
 
             @Override
             public @NotNull Vector3f modifyFogColor(@NotNull Camera camera, float partialTick, @NotNull ClientLevel level, int renderDistance, float darkenWorldAmount, @NotNull Vector3f fluidFogColor) {
-                return new Vector3f(1.0F, 0.5F, 0.2F); // Niebla naranja cálido
+                return new Vector3f(0.7F, 0.7F, 1.0F); // Niebla
             }
         }, ModFluids.HOT_WATER_TYPE.get());
     }

@@ -136,6 +136,7 @@ public class ModItems {
     public static void register(IEventBus eventBus) {
 
         ITEMS.register(eventBus);
+        ModFluids.ITEMS.register(eventBus);
         ModFluids.FLUID_TYPES.register(eventBus);
         ModFluids.FLUIDS.register(eventBus);
         ModFluids.BLOCKS.register(eventBus);

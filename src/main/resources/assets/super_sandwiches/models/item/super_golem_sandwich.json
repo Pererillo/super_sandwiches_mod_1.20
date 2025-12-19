@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "super_sandwiches:item/super_golem_sandwich"
+  }
+}

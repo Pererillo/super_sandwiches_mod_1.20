@@ -1,0 +1,37 @@
+{
+  "parent": "super_sandwiches:sandwiches/adding_flavor",
+  "criteria": {
+    "firon": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "super_sandwiches:flavored_iron"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.sandwiches.doctors_advice.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "id": {
+      "item": "super_sandwiches:flavored_iron"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.sandwiches.doctors_advice.title"
+    }
+  },
+  "requirements": [
+    [
+      "firon"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

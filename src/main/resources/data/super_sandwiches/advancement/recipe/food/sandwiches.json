@@ -1,0 +1,39 @@
+{
+  "parent": "super_sandwiches:recipes/root",
+  "criteria": {
+    "has_hot_bucket": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "super_sandwiches:slice_of_bread"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "super_sandwiches:sandwich_beef_from_beef"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_hot_bucket",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "super_sandwiches:sandwich_beef_from_beef",
+      "super_sandwiches:sandwich_fish_from_cod",
+      "super_sandwiches:sandwich_fish_from_salmon",
+      "super_sandwiches:sandwich_pork_from_porkchop",
+      "super_sandwiches:sandwich_teriyaki_from_chicken"
+    ]
+  },
+  "sends_telemetry_event": false
+}

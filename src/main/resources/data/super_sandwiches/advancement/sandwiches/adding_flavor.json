@@ -1,0 +1,37 @@
+{
+  "parent": "super_sandwiches:sandwiches/boiling_water",
+  "criteria": {
+    "broth": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "super_sandwiches:broth"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.sandwiches.adding_flavor.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "super_sandwiches:broth"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.sandwiches.adding_flavor.title"
+    }
+  },
+  "requirements": [
+    [
+      "broth"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,37 @@
+{
+  "parent": "super_sandwiches:sandwiches/adding_flavor",
+  "criteria": {
+    "fdiamond": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "super_sandwiches:flavored_diamond"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.sandwiches.hard_diet.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "super_sandwiches:flavored_diamond"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.sandwiches.hard_diet.title"
+    }
+  },
+  "requirements": [
+    [
+      "fdiamond"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

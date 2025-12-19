@@ -1,0 +1,37 @@
+{
+  "parent": "super_sandwiches:sandwiches/sugoi",
+  "criteria": {
+    "angler": {
+      "conditions": {
+        "items": [
+          {
+            "items":
+              "super_sandwiches:super_angler_sandwich"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.sandwiches.give_me_the_loot.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "super_sandwiches:super_angler_sandwich"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.sandwiches.give_me_the_loot.title"
+    }
+  },
+  "requirements": [
+    [
+      "angler"
+    ]
+  ],
+  "sends_telemetry_event": false
+}
