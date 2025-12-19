@@ -1,5 +1,6 @@
 package net.pererillo.super_sandwiches;
 
+import net.pererillo.super_sandwiches.item.ModFluids;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -67,7 +68,10 @@ public class SandwichMod {
     public SandwichMod(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
+        ModFluids.FLUID_TYPES.register(modEventBus);
+        ModFluids.FLUIDS.register(modEventBus);
+        ModFluids.BLOCKS.register(modEventBus);
+        ModFluids.ITEMS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so blocks get registered
         BLOCKS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so items get registered
