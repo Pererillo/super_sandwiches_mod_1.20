@@ -1,0 +1,36 @@
+{
+  "parent": "super_sandwiches:sandwiches/doctors_advice",
+  "criteria": {
+    "golem": {
+      "conditions": {
+        "items": [
+          {
+            "items": "super_sandwiches:super_golem_sandwich"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.sandwiches.village_guardian.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "super_sandwiches:super_golem_sandwich"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.sandwiches.village_guardian.title"
+    }
+  },
+  "requirements": [
+    [
+      "golem"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

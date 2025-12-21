@@ -1,0 +1,36 @@
+{
+  "parent": "super_sandwiches:sandwiches/root",
+  "criteria": {
+    "bread": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:bread"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.sandwiches.get_bread.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "minecraft:bread"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.sandwiches.get_bread.title"
+    }
+  },
+  "requirements": [
+    [
+      "bread"
+    ]
+  ],
+  "sends_telemetry_event": false
+}

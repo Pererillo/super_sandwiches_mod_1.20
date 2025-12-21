@@ -21,7 +21,9 @@
   "item.super_sandwiches.super_explorer_sandwich": "Súper sándwich del explorador",
   "item.super_sandwiches.slice_of_bread": "Rebanada de pan",
   "item.super_sandwiches.broth": "Caldo",
-  "item.super_sandwiches.hot_water_bucket": "Cubeta con agua caliente",
+  "item.super_sandwiches.hot_water_bucket": "Cubeta de agua caliente",
+
+  "block.super_sandwiches.hot_water":"Agua Caliente",
 
   "advancements.sandwiches.root.title": "Súper Sándwiches",
   "advancements.sandwiches.root.description": "Pueden ser lo que sea",

@@ -1,0 +1,36 @@
+{
+  "parent": "super_sandwiches:sandwiches/adding_flavor",
+  "criteria": {
+    "fpitcher": {
+      "conditions": {
+        "items": [
+          {
+            "items": "super_sandwiches:flavored_pitcher_plant"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.sandwiches.flavors_from_the_past.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "super_sandwiches:flavored_pitcher_plant"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.sandwiches.flavors_from_the_past.title"
+    }
+  },
+  "requirements": [
+    [
+      "fpitcher"
+    ]
+  ],
+  "sends_telemetry_event": false
+}
