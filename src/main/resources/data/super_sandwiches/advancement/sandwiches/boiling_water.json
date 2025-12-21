@@ -5,8 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items":
-              "super_sandwiches:hot_water_bucket"
+            "items": "super_sandwiches:hot_water_bucket"
           }
         ]
       },

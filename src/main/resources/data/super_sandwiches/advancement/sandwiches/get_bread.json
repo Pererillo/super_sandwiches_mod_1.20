@@ -5,8 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items":
-              "minecraft:bread"
+            "items": "minecraft:bread"
           }
         ]
       },
@@ -24,7 +23,7 @@
       "id": "minecraft:bread"
     },
     "show_toast": true,
-    "id": {
+    "title": {
       "translate": "advancements.sandwiches.get_bread.title"
     }
   },

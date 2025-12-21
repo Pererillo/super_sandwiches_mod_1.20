@@ -5,8 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items":
-              "super_sandwiches:flavored_iron"
+            "items": "super_sandwiches:flavored_iron"
           }
         ]
       },
@@ -20,8 +19,8 @@
     },
     "frame": "task",
     "hidden": false,
-    "id": {
-      "item": "super_sandwiches:flavored_iron"
+    "icon": {
+      "id": "super_sandwiches:flavored_iron"
     },
     "show_toast": true,
     "title": {

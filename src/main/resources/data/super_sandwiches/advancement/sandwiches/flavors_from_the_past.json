@@ -5,8 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items":
-              "super_sandwiches:flavored_pitcher_plant"
+            "items": "super_sandwiches:flavored_pitcher_plant"
           }
         ]
       },

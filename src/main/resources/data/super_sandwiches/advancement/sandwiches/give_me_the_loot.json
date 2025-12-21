@@ -5,8 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items":
-              "super_sandwiches:super_angler_sandwich"
+            "items": "super_sandwiches:super_angler_sandwich"
           }
         ]
       },

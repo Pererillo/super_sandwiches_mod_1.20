@@ -5,8 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items":
-              "super_sandwiches:flavored_tropical_fish"
+            "items": "super_sandwiches:flavored_tropical_fish"
           }
         ]
       },
