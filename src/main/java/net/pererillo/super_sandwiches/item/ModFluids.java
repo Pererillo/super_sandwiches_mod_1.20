@@ -44,17 +44,17 @@ public class ModFluids {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.createBlocks(SandwichMod.MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.createItems(SandwichMod.MODID);
 
-    // FluidType con texturas vanilla CORRECTAS
+    // FluidType con texturas vanilla
     public static final DeferredHolder<FluidType, FluidType> HOT_WATER_TYPE = FLUID_TYPES.register("hot_water",
             () -> new FluidType(FluidType.Properties.create()
                     .canExtinguish(true)
                     .density(1000)
                     .viscosity(500)
-                    .temperature(350)  // Caliente
-                    .canPushEntity(true)      // Empuja entidades (movimiento lento)
-                    .motionScale(0.014F)      // Velocidad de movimiento como agua
+                    .temperature(1300)
+                    .canPushEntity(true)      // Empuja entidades
+                    .motionScale(0.014F)      // Velocidad de movimiento
                     .canHydrate(true)         // Puede hidratar cultivos
-                    .canConvertToSource(false) // Puede convertirse en fuente
+                    .canConvertToSource(false) // Si puede convertirse en fuente
                     .supportsBoating(true)    // Permite barcos
                     .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
                     .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
@@ -78,12 +78,12 @@ public class ModFluids {
     }
 
     public static final DeferredHolder<Item, BucketItem> HOT_WATER_BUCKET = ITEMS.register("hot_water_bucket",
-            () -> new BucketItem(HOT_WATER_SOURCE.get(),  // ← .get() aquí
+            () -> new BucketItem(HOT_WATER_SOURCE.get(),
                     new Item.Properties()
                             .craftRemainder(Items.BUCKET)
                             .stacksTo(1)));
 
-    // BLOQUE: Pasa el DeferredHolder directamente (actúa como Supplier)
+
     public static final DeferredHolder<Block, HotWaterBlock> HOT_WATER_BLOCK = BLOCKS.register("hot_water",
             () -> new HotWaterBlock(HOT_WATER_SOURCE.get(),
                     BlockBehaviour.Properties.ofFullCopy(Blocks.WATER)
@@ -106,22 +106,36 @@ public class ModFluids {
                     ServerLevel serverLevel = (ServerLevel) level;
                     RandomSource rand = serverLevel.random;
 
-                    // Evapora hot_water
                     level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
 
-                    // Vapor épico
                     double x = pos.getX() + 0.5;
                     double y = pos.getY() + 0.5;
                     double z = pos.getZ() + 0.5;
-                    serverLevel.sendParticles(ParticleTypes.LARGE_SMOKE, x, y, z, 10, 0.5, 0.8, 0.5, 0.1);
-
-                    // Sonido explosivo
-                    serverLevel.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0F, 0.7F + rand.nextFloat() * 0.6F);
-
-                    // Fuerza update en lava para "limpiar" cualquier reacción pendiente
+                    serverLevel.sendParticles(ParticleTypes.LARGE_SMOKE, x, y, z, 40, 0.5, 0.8, 0.5, 0.1);
+                    serverLevel.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 2.0F, 0.7F + rand.nextFloat() * 0.6F);
                     level.scheduleTick(neighborPos, level.getFluidState(neighborPos).getType(), 1);
-
                     return;
+                }
+            }
+        }
+
+        private void tryMeltNearby(ServerLevel level, BlockPos pos, RandomSource rand) {
+            if (rand.nextFloat() < 0.6F) {  // 60% chance
+                int range = 3;
+                for (int i = 0; i < 15; ++i) {  // 15 checks por segundo
+                    BlockPos meltPos = pos.offset(
+                            rand.nextInt(range * 2 + 1) - range,
+                            rand.nextInt(range * 2 + 1) - range,
+                            rand.nextInt(range * 2 + 1) - range
+                    );
+
+                    BlockState meltState = level.getBlockState(meltPos);
+                    if (meltState.is(Blocks.SNOW) || meltState.is(Blocks.SNOW_BLOCK)) {
+                        level.setBlock(meltPos, Blocks.AIR.defaultBlockState(), 2);
+                    } else if (meltState.is(Blocks.ICE) || meltState.is(Blocks.BLUE_ICE) ||
+                            meltState.is(Blocks.PACKED_ICE) || meltState.is(Blocks.FROSTED_ICE)) {
+                        level.setBlock(meltPos, Blocks.WATER.defaultBlockState(), 2);
+                    }
                 }
             }
         }
@@ -129,8 +143,25 @@ public class ModFluids {
         @Override
         public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
             tryEvaporate(level, pos);
-            if (level.getBlockState(pos).is(this)) {  // Si no se evaporó, flujo normal
+            if (level.getBlockState(pos).is(this)) {
                 super.tick(state, level, pos, rand);
+
+                // RE-SCHEDULE para source (derrite constante)
+                if (state.getValue(LEVEL) == 0) {
+                    tryMeltNearby(level, pos, rand);
+                    level.scheduleTick(pos, this, 40);  // Cada segundo
+                }
+            }
+        }
+
+        @Override
+        public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean moving) {
+            super.onPlace(state, level, pos, oldState, moving);
+            tryEvaporate(level, pos);
+
+            // Tick constante para la source
+            if (state.getValue(LEVEL) == 0) {
+                level.scheduleTick(pos, this, 20);
             }
         }
 
@@ -138,13 +169,6 @@ public class ModFluids {
         public void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, BlockPos neighborPos, boolean moving) {
             super.neighborChanged(state, level, pos, block, neighborPos, moving);
             tryEvaporate(level, pos);
-        }
-
-        @Override
-        public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean moving) {
-            super.onPlace(state, level, pos, oldState, moving);
-            tryEvaporate(level, pos);
-            level.scheduleTick(pos, this, 5);
         }
 
         @Override
