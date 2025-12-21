@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -11,6 +12,7 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -97,6 +99,7 @@ public class ModFluids {
             super(fluid, properties);
         }
 
+        // EVAPORACIÓN EN LAVA
         private void tryEvaporate(Level level, BlockPos pos) {
             if (level.isClientSide) return;
 
@@ -119,10 +122,11 @@ public class ModFluids {
             }
         }
 
+        // DERRITE GRADUAL EN RADIO 3 (vanilla-like)
         private void tryMeltNearby(ServerLevel level, BlockPos pos, RandomSource rand) {
-            if (rand.nextFloat() < 0.6F) {  // 60% chance
+            if (rand.nextFloat() < 0.6F) {  // Ajusta para más/menos velocidad
                 int range = 3;
-                for (int i = 0; i < 15; ++i) {  // 15 checks por segundo
+                for (int i = 0; i < 15; ++i) {
                     BlockPos meltPos = pos.offset(
                             rand.nextInt(range * 2 + 1) - range,
                             rand.nextInt(range * 2 + 1) - range,
@@ -146,10 +150,9 @@ public class ModFluids {
             if (level.getBlockState(pos).is(this)) {
                 super.tick(state, level, pos, rand);
 
-                // RE-SCHEDULE para source (derrite constante)
                 if (state.getValue(LEVEL) == 0) {
                     tryMeltNearby(level, pos, rand);
-                    level.scheduleTick(pos, this, 40);  // Cada segundo
+                    level.scheduleTick(pos, this, 40);  // Cada segundo para source quieta
                 }
             }
         }
@@ -159,7 +162,6 @@ public class ModFluids {
             super.onPlace(state, level, pos, oldState, moving);
             tryEvaporate(level, pos);
 
-            // Tick constante para la source
             if (state.getValue(LEVEL) == 0) {
                 level.scheduleTick(pos, this, 20);
             }
@@ -171,11 +173,53 @@ public class ModFluids {
             tryEvaporate(level, pos);
         }
 
+        // PARTÍCULAS + SONIDO BURBUJEO (client-side)
+        @Override
+        public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource rand) {
+            super.animateTick(state, level, pos, rand);
+
+            if (state.getValue(LEVEL) == 0 && level.isClientSide) {
+                // Burbujas pequeñas
+                double x = pos.getX() + rand.nextDouble();
+                double y = pos.getY() + rand.nextDouble();
+                double z = pos.getZ() + rand.nextDouble();
+                level.addParticle(ParticleTypes.BUBBLE, x, y, z, 0.0, 0.04 + rand.nextDouble() * 0.04, 0.0);
+
+                // Vapor leve
+                level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, x, y + 0.1, z, 0.0, 0.02 + rand.nextDouble() * 0.02, 0.0);
+
+                // Sonido burbujeo sutil cada ~4 seg
+                if (rand.nextInt(5) == 0) {
+                    level.playLocalSound(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                            SoundEvents.BUBBLE_COLUMN_BUBBLE_POP, SoundSource.BLOCKS,
+                            0.3F + rand.nextFloat() * 0.2F, 0.8F + rand.nextFloat() * 0.4F, false);
+                }
+            }
+
+            if (state.getValue(LEVEL) == (rand.nextInt(6+1)) && level.isClientSide) {
+                // Burbujas pequeñas
+                double x = pos.getX() + rand.nextDouble();
+                double y = pos.getY() + rand.nextDouble();
+                double z = pos.getZ() + rand.nextDouble();
+                level.addParticle(ParticleTypes.BUBBLE, x, y, z, 0.0, 0.04 + rand.nextDouble() * 0.04, 0.0);
+
+                // Vapor leve
+
+                // Sonido burbujeo sutil cada ~4 seg
+                if (rand.nextInt(20) == 0) {
+                    level.playLocalSound(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                            SoundEvents.BUBBLE_COLUMN_BUBBLE_POP, SoundSource.BLOCKS,
+                            0.3F + rand.nextFloat() * 0.2F, 0.8F + rand.nextFloat() * 0.4F, false);
+                }
+            }
+        }
+
         @Override
         public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
             super.entityInside(state, level, pos, entity);
+
             if (!level.isClientSide && entity instanceof LivingEntity living && living.tickCount % 20 == 0) {
-                living.hurt(level.damageSources().hotFloor(), 0.5F);
+                living.hurt(level.damageSources().hotFloor(), 1.0F);
             }
         }
     }
