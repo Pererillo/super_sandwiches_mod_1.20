@@ -23,6 +23,8 @@
   "item.super_sandwiches.broth": "Broth",
   "item.super_sandwiches.hot_water_bucket": "Hot Water Bucket",
 
+  "block.super_sandwiches.hot_water":"Hot Water",
+
   "advancements.sandwiches.root.title": "Super Sandwiches",
   "advancements.sandwiches.root.description": "They can be anything",
   "advancements.sandwiches.get_bread.description": "Craft some Bread from Wheat",

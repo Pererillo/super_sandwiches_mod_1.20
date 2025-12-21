@@ -67,72 +67,7 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(ModFoods.SLICE_OF_BREAD)));
     public static final DeferredItem<Item> BROTH = ITEMS.register("broth",
             () -> new Item(new Item.Properties()));
-//
-//    public static final DeferredRegister<Fluid> FLUIDS =
-//            DeferredRegister.create(ForgeRegistries.FLUIDS, SandwichMod.MOD_ID);
-//
-//    public static final RegistryObject<Fluid> UN_FILLABLE = FLUIDS.register("un_fillable",
-//            () -> new Fluid() {
-//                @Override
-//                public Item getBucket() {
-//                    return null;
-//                }
-//
-//                @Override
-//                protected boolean canBeReplacedWith(FluidState pState, BlockGetter pLevel, BlockPos pPos, Fluid pFluid, Direction pDirection) {
-//                    return false;
-//                }
-//
-//                @Override
-//                protected Vec3 getFlow(BlockGetter pBlockReader, BlockPos pPos, FluidState pFluidState) {
-//                    return null;
-//                }
-//
-//                @Override
-//                public int getTickDelay(LevelReader pLevel) {
-//                    return 0;
-//                }
-//
-//                @Override
-//                protected float getExplosionResistance() {
-//                    return 0;
-//                }
-//
-//                @Override
-//                public float getHeight(FluidState pState, BlockGetter pLevel, BlockPos pPos) {
-//                    return 0;
-//                }
-//
-//                @Override
-//                public float getOwnHeight(FluidState pState) {
-//                    return 0;
-//                }
-//
-//                @Override
-//                protected BlockState createLegacyBlock(FluidState pState) {
-//                    return null;
-//                }
-//
-//                @Override
-//                public boolean isSource(FluidState pState) {
-//                    return false;
-//                }
-//
-//                @Override
-//                public int getAmount(FluidState pState) {
-//                    return 0;
-//                }
-//
-//                @Override
-//                public VoxelShape getShape(FluidState pState, BlockGetter pLevel, BlockPos pPos) {
-//                    return null;
-//                }
-//            });
-//
-//    public static final RegistryObject<Item> HOT_WATER_BUCKET = ITEMS.register("hot_water_bucket",
-//            () -> new BucketItem(ModItems.UN_FILLABLE, (new Item.Properties()).craftRemainder(Items.BUCKET).stacksTo(1)));
-//
-//
+
     public static void register(IEventBus eventBus) {
 
         ITEMS.register(eventBus);

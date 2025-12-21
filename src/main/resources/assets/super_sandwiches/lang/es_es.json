@@ -23,6 +23,8 @@
   "item.super_sandwiches.broth": "Caldo",
   "item.super_sandwiches.hot_water_bucket": "Cubo con agua caliente",
 
+  "block.super_sandwiches.hot_water":"Agua Caliente",
+
   "advancements.sandwiches.root.title": "Súper Sándwiches",
   "advancements.sandwiches.root.description": "Pueden ser lo que sea",
   "advancements.sandwiches.get_bread.description": "Haz algo de pan usando trigo",
