@@ -4,7 +4,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -12,7 +11,6 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -24,7 +22,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
 import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import net.neoforged.neoforge.fluids.FluidType;
@@ -32,8 +29,6 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.pererillo.super_sandwiches.SandwichMod;
-
-import java.util.function.Supplier;
 
 public class ModFluids {
 
@@ -122,9 +117,9 @@ public class ModFluids {
             }
         }
 
-        // DERRITE GRADUAL EN RADIO 3 (vanilla-like)
+        // DERRITE GRADUAL EN UN RANGO DE 3 (vanilla-like)
         private void tryMeltNearby(ServerLevel level, BlockPos pos, RandomSource rand) {
-            if (rand.nextFloat() < 0.6F) {  // Ajusta para más/menos velocidad
+            if (rand.nextFloat() < 0.6F) {  // Ajustar para más/menos velocidad
                 int range = 3;
                 for (int i = 0; i < 15; ++i) {
                     BlockPos meltPos = pos.offset(
@@ -152,7 +147,7 @@ public class ModFluids {
 
                 if (state.getValue(LEVEL) == 0) {
                     tryMeltNearby(level, pos, rand);
-                    level.scheduleTick(pos, this, 40);  // Cada segundo para source quieta
+                    level.scheduleTick(pos, this, 40);  // Cada segundo con el source quieto
                 }
             }
         }
@@ -205,7 +200,7 @@ public class ModFluids {
 
                 // Vapor leve
 
-                // Sonido burbujeo sutil cada ~4 seg
+                // Sonido burbujeo sutil
                 if (rand.nextInt(20) == 0) {
                     level.playLocalSound(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
                             SoundEvents.BUBBLE_COLUMN_BUBBLE_POP, SoundSource.BLOCKS,
